@@ -9,8 +9,8 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j;
-	int temp, ir;
+	size_t i, j, ir;
+	int temp;
 
 	if (!array || size < 2)
 		return;
@@ -19,12 +19,15 @@ void selection_sort(int *array, size_t size)
 		ir = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < array[ir])
+			if (array[ir] > array[j])
 				ir = j;
 		}
-	temp = array[i];
-	array[i] = array[ir];
-	array[ir] = temp;
-	print_array(array, size);
+		if (ir != i)
+		{
+			temp = array[i];
+			array[i] = array[ir];
+			array[ir] = temp;
+			print_array(array, size);
+		}
 	}
 }
